@@ -1,26 +1,183 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Sky gradient canvas */
+  --color-sky-100: #DDEBF7;
+  --color-sky-300: #A7CBE8;
+  --color-sky-500: #7BB0DA;
+  --color-sky-cloud: #F5FAFF;
+
+  /* Ink */
+  --color-ink-900: #0B1220;
+  --color-ink-700: #1F2937;
+  --color-ink-500: #6B7280;
+  --color-ink-300: #D1D5DB;
+
+  /* Surfaces */
+  --color-paper: #FFFFFF;
+  --color-paper-alt: #FAFAF7;
+
+  /* Accent — flame/coral orange */
+  --color-flame-500: #E85D2F;
+  --color-flame-600: #CC4A20;
+  --color-flame-100: #FDECE4;
+
+  /* Signal */
+  --color-signal: #22C55E;
+  --color-cursor: #3B82F6;
+
+  /* Shadows */
+  --shadow-card: 0 20px 60px -20px rgba(11, 18, 32, 0.18);
+  --shadow-lift: 0 32px 80px -24px rgba(11, 18, 32, 0.28);
+
+  /* Fonts — bound to next/font CSS variables */
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-script: var(--font-caveat), cursive;
+
+  /* Type scale */
+  --fs-hero: clamp(3.5rem, 8vw + 1rem, 9rem);
+  --fs-h1: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+  --fs-h2: clamp(1.75rem, 2vw + 1rem, 2.5rem);
+  --fs-body: clamp(1rem, 0.5vw + 0.9rem, 1.125rem);
+  --fs-mono: 0.75rem;
+  --fs-script: clamp(1.25rem, 1vw + 1rem, 1.75rem);
+
+  /* Radii */
+  --radius-card: 24px;
+  --radius-pill: 999px;
+  --radius-chip: 8px;
+
+  /* Rhythm */
+  --space-section: clamp(6rem, 12vh, 10rem);
+
+  /* Easings */
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-slow: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html,
+body {
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-flame-500);
+  color: white;
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-flame-500);
+  outline-offset: 3px;
+}
+
+/* Display heading utility */
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+/* Section heading */
+.h-section {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+/* Eyebrow — mono, uppercase, tiny */
+.eyebrow-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-ink-500);
+}
+
+/* Handwritten eyebrow */
+.eyebrow-script {
+  font-family: var(--font-script);
+  font-size: var(--fs-script);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-flame-500);
+}
+
+/* Body lead */
+.lead {
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: var(--color-ink-700);
+  max-width: 60ch;
+}
+
+/* Card base */
+.card {
+  background: var(--color-paper);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.card-dark {
+  background: var(--color-ink-900);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  color: white;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Skip to content */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--color-flame-500);
+  color: white;
+  border-radius: var(--radius-pill);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.skip-to-content:focus {
+  top: 0.5rem;
 }

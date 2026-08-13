@@ -1,0 +1,47 @@
+export const SERVICES = [
+  {
+    index: "01",
+    slug: "ai-prototyping",
+    title: "AI Prototyping & Custom Software.",
+    sub: "Ideas to working prototypes in days, not sprints. Custom tools where SaaS won't do.",
+    work: "I use Claude Code and Antigravity to move from spec to working prototype fast. If you can describe the problem, I can build the smallest version that solves it — the one you'll actually learn from.",
+    deliverables: [
+      "Prototypes",
+      "Internal Tools",
+      "AI Wrappers",
+      "MVPs",
+      "Automations",
+      "Integrations",
+    ],
+  },
+  {
+    index: "02",
+    slug: "websites",
+    title: "Website Design & Maintenance.",
+    sub: "Sites that convert, load fast, and don't need me to keep them alive. But I stick around if you want.",
+    work: "Landing pages, portfolios, small e-commerce. Every page is designed in Figma, built with Next.js or Framer, and shipped fast. I don't ghost after launch — maintenance is on the menu.",
+    deliverables: [
+      "Landing Pages",
+      "Portfolios",
+      "E-commerce",
+      "Framer Sites",
+      "Next.js Sites",
+      "Ongoing Care",
+    ],
+  },
+  {
+    index: "03",
+    slug: "brand",
+    title: "Brand Identity, End to End.",
+    sub: "Logo, voice, system, guidelines. The whole thing, so your brand doesn't look like a Canva accident.",
+    work: "I don't do logo-only jobs. Brand is a full stack: mark, type, color, voice, and the little rules that keep it from falling apart when you scale. You leave with a system, not a PDF.",
+    deliverables: [
+      "Logo Suite",
+      "Brand Guidelines",
+      "Typography System",
+      "Color System",
+      "Voice + Copy",
+      "Social Kit",
+    ],
+  },
+] as const;
