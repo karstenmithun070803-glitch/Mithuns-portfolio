@@ -6,7 +6,7 @@ export const SITE = {
   timezone: "Asia/Kolkata",
   email: "socialwithmithun@gmail.com",
   // TODO: real handle
-  instagram: "https://instagram.com/mithun",
+  instagram: "https://www.instagram.com/filmbymithun?utm_source=qr",
   yearsSince: 2024,
 } as const;
 
